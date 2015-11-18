@@ -14,13 +14,17 @@ import java.util.List;
 import andro.template.drawertemplate.R;
 import andro.template.drawertemplate.model.RecyclerItem;
 import andro.template.drawertemplate.ui.adapter.RecyclerAdapter;
-import andro.template.drawertemplate.ui.fragment.base.BaseFragment;
+import andro.template.drawertemplate.ui.fragment.base.BaseRecyclerFragment;
 import andro.template.drawertemplate.ui.util.RecyclerListMarginDecoration;
 
 /**
  * Created by Andro on 11/18/2015.
  */
-public class PagerListFragment extends BaseFragment {
+public class PagerListFragment extends BaseRecyclerFragment {
+
+    private RecyclerAdapter adapter;
+    private LinearLayoutManager layoutManager;
+    private List<RecyclerItem> items;
 
     @Nullable
     @Override
@@ -32,11 +36,13 @@ public class PagerListFragment extends BaseFragment {
     public void onViewCreated(View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
         RecyclerView recyclerView = (RecyclerView) findViewById(R.id.recycler_view);
+        layoutManager = new LinearLayoutManager(getActivity());
         recyclerView.setHasFixedSize(true);
-        recyclerView.setLayoutManager(new LinearLayoutManager(getActivity()));
+        recyclerView.setLayoutManager(layoutManager);
         recyclerView.addItemDecoration(new RecyclerListMarginDecoration(getResources().getDimensionPixelSize(R.dimen.recycler_list_margin)));
 
-        RecyclerAdapter adapter = new RecyclerAdapter(getActivity(), getItems());
+        items = getItems();
+        adapter = new RecyclerAdapter(getActivity(), items);
         recyclerView.setAdapter(adapter);
     }
 
@@ -55,4 +61,13 @@ public class PagerListFragment extends BaseFragment {
         return items;
     }
 
+    @Override
+    public void onRefresh() {
+        swipeRefreshLayout.setRefreshing(false);
+        items.add(0, new RecyclerItem("https://placeholdit.imgix.net/~text?txtsize=33&txt=720%C3%97300&w=720&h=300", "Lorem Ipsum"));
+        adapter.notifyItemInserted(0);
+        if (layoutManager.findFirstCompletelyVisibleItemPosition() == 0) {
+            layoutManager.scrollToPosition(0);
+        }
+    }
 }

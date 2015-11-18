@@ -20,6 +20,9 @@
 
         <activity android:name=".ui.activity.SettingsActivity" />
 
+        <activity android:name=".ui.activity.DetailsActivity"
+            android:theme="@style/AppTheme.AppBarOverlay" />
+
     </application>
 
 </manifest>

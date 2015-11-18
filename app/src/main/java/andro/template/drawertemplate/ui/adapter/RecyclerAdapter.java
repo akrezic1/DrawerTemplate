@@ -1,6 +1,9 @@
 package andro.template.drawertemplate.ui.adapter;
 
 import android.app.Activity;
+import android.content.Intent;
+import android.os.Build;
+import android.support.v4.app.ActivityOptionsCompat;
 import android.support.v7.widget.CardView;
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
@@ -15,6 +18,7 @@ import java.util.List;
 
 import andro.template.drawertemplate.R;
 import andro.template.drawertemplate.model.RecyclerItem;
+import andro.template.drawertemplate.ui.activity.DetailsActivity;
 
 /**
  * Created by Andro on 11/18/2015.
@@ -68,7 +72,27 @@ public class RecyclerAdapter extends RecyclerView.Adapter<RecyclerAdapter.ViewHo
             image = (ImageView) view.findViewById(R.id.image_details);
             title = (TextView) view.findViewById(R.id.title);
 
+            cardView.setOnClickListener(cardClickListener);
         }
+
+        View.OnClickListener cardClickListener = new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(activity, DetailsActivity.class);
+
+                intent.putExtra(DetailsActivity.TAG_IMAGE_DETAILS, items.get(getAdapterPosition()).getImageUrl());
+                intent.putExtra(DetailsActivity.TAG_TITLE_DETAILS, items.get(getAdapterPosition()).getTitle());
+
+                if (Build.VERSION.SDK_INT > 21) {
+                    ActivityOptionsCompat options = ActivityOptionsCompat.
+                            makeSceneTransitionAnimation(activity, image, "item_image");
+                    activity.startActivity(intent, options.toBundle());
+
+                } else {
+                    activity.startActivity(intent);
+                }
+            }
+        };
 
     }
 }

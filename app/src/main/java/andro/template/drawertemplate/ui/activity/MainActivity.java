@@ -12,7 +12,8 @@ import java.util.List;
 import andro.template.drawertemplate.ui.activity.base.DrawerActivity;
 import andro.template.drawertemplate.R;
 import andro.template.drawertemplate.ui.adapter.PagerAdapter;
-import andro.template.drawertemplate.ui.fragment.PagerFragment;
+import andro.template.drawertemplate.ui.fragment.PagerGridFragment;
+import andro.template.drawertemplate.ui.fragment.PagerListFragment;
 
 public class MainActivity extends DrawerActivity {
 
@@ -45,9 +46,9 @@ public class MainActivity extends DrawerActivity {
 
     private List<Fragment> getPagerFragments() {
         List<Fragment> fragments = new ArrayList<>();
-        fragments.add(new PagerFragment());
-        fragments.add(new PagerFragment());
-        fragments.add(new PagerFragment());
+        fragments.add(new PagerListFragment());
+        fragments.add(new PagerGridFragment());
+        fragments.add(new PagerListFragment());
         return fragments;
     }
 

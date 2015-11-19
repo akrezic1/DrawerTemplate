@@ -40,7 +40,7 @@ public class PagerGridFragment extends BaseRecyclerFragment {
         layoutManager = new GridLayoutManager(getActivity(), 2);
         recyclerView.setHasFixedSize(true);
         recyclerView.setLayoutManager(layoutManager);
-        recyclerView.addItemDecoration(new RecyclerGridMarginDecoration(2, getResources().getDimensionPixelSize(R.dimen.recycler_list_margin), false));
+        recyclerView.addItemDecoration(new RecyclerGridMarginDecoration(2, getResources().getDimensionPixelSize(R.dimen.recycler_list_margin), true));
 
         items = getItems();
         adapter = new RecyclerAdapter(getActivity(), items);

@@ -1,4 +1,4 @@
-package andro.template.drawertemplate;
+package andro.heklaton.rsc;
 
 import org.junit.Test;
 

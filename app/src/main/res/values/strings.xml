@@ -6,4 +6,14 @@
     <string name="navigation_drawer_open">Open navigation drawer</string>
     <string name="navigation_drawer_close">Close navigation drawer</string>
 
+    <string name="login">Login</string>
+    <string name="registration">Registration</string>
+    <string name="register">Register</string>
+    <string name="register_an_account">Register an account</string>
+    <string name="login_with_account">Login</string>
+    <string name="email">E-mail</string>
+    <string name="password">Password</string>
+    <string name="already_have_account">Already have an account?</string>
+    <string name="need_an_account">Need an account?</string>
+
 </resources>

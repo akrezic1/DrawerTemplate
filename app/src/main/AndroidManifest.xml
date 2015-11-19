@@ -1,5 +1,5 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
-    package="andro.template.drawertemplate">
+    package="andro.heklaton.rsc">
 
     <uses-permission android:name="android.permission.INTERNET" />
 
@@ -9,16 +9,16 @@
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
 
-        <activity android:name=".ui.activity.MainActivity"
+        <activity android:name="andro.heklaton.rsc.ui.activity.MainActivity"
             android:theme="@style/AppTheme.AppBarOverlay">
         </activity>
 
-        <activity android:name=".ui.activity.SettingsActivity" />
+        <activity android:name="andro.heklaton.rsc.ui.activity.SettingsActivity" />
 
-        <activity android:name=".ui.activity.DetailsActivity"
+        <activity android:name="andro.heklaton.rsc.ui.activity.DetailsActivity"
             android:theme="@style/AppTheme.AppBarOverlay" />
 
-        <activity android:name=".ui.activity.SplashActivity"
+        <activity android:name="andro.heklaton.rsc.ui.activity.SplashActivity"
             android:theme="@style/AppTheme"
             android:noHistory="true">
             <intent-filter>
@@ -28,9 +28,15 @@
             </intent-filter>
         </activity>
 
-        <activity android:name=".ui.activity.LoginActivity"
+        <activity android:name="andro.heklaton.rsc.ui.activity.LoginActivity"
             android:theme="@style/AppTheme"
-            android:noHistory="true"/>
+            android:noHistory="true"
+            android:windowSoftInputMode="stateAlwaysHidden" />
+
+        <activity android:name=".ui.activity.RegistrationActivity"
+            android:theme="@style/AppTheme"
+            android:noHistory="true"
+            android:windowSoftInputMode="stateAlwaysHidden" />
 
     </application>
 

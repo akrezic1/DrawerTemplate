@@ -7,6 +7,7 @@
         <item name="colorPrimaryDark">@color/colorPrimaryDark</item>
         <item name="colorAccent">@color/colorAccent</item>
         <item name="actionMenuTextColor">@android:color/white</item>
+        <item name="android:windowContentTransitions">true</item>
     </style>
 
     <!-- Toolbar that has overlay over system bar -->

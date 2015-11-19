@@ -34,7 +34,7 @@
                 <TextView
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:text="@string/login_with_account"
+                    android:text="@string/register_an_account"
                     android:textColor="@color/colorPrimaryDark"
                     android:gravity="center"
                     android:textSize="18sp"
@@ -78,30 +78,13 @@
 
                 </android.support.design.widget.TextInputLayout>
 
-                <LinearLayout
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:gravity="center_vertical|end">
-
-                    <TextView
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:text="Remember me" />
-
-                    <CheckBox
-                        android:id="@+id/chckRememberMe"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:gravity="center_vertical" />
-                </LinearLayout>
-
                 <Button
-                    android:id="@+id/button_login"
+                    android:id="@+id/button_register"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_marginTop="28dp"
                     android:background="@color/colorPrimary"
-                    android:text="@string/login"
+                    android:text="@string/register"
                     android:layout_marginLeft="32dp"
                     android:layout_marginStart="32dp"
                     android:layout_marginRight="32dp"
@@ -109,25 +92,26 @@
                     android:textColor="@android:color/white" />
 
                 <LinearLayout
-                    android:id="@+id/ll_register"
+                    android:id="@+id/ll_login"
                     android:layout_width="wrap_content"
                     android:orientation="vertical"
-                    android:paddingBottom="8dp"
                     android:layout_gravity="center"
-                    android:layout_height="wrap_content">
+                    android:layout_height="wrap_content"
+                    android:paddingBottom="8dp">
 
                     <TextView
+                        android:id="@+id/txt_already_have_account"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:gravity="center"
-                        android:text="@string/need_an_account"
+                        android:text="@string/already_have_account"
                         android:layout_marginTop="16dp"
                         android:textSize="12sp"/>
 
                     <TextView
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:text="@string/register"
+                        android:text="@string/login"
                         android:gravity="center"
                         android:textSize="12sp"
                         android:textColor="@color/colorPrimary"/>

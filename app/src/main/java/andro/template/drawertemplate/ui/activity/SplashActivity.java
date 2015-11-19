@@ -17,6 +17,6 @@ public class SplashActivity extends BaseSplash {
 
     @Override
     public Class getNextClassActivity() {
-        return MainActivity.class;
+        return LoginActivity.class;
     }
 }

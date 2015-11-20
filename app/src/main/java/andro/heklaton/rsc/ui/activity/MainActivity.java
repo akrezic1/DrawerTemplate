@@ -9,8 +9,8 @@ import android.support.v7.widget.Toolbar;
 import java.util.ArrayList;
 import java.util.List;
 
-import andro.heklaton.rsc.ui.activity.base.DrawerActivity;
 import andro.heklaton.rsc.R;
+import andro.heklaton.rsc.ui.activity.base.DrawerActivity;
 import andro.heklaton.rsc.ui.adapter.PagerAdapter;
 import andro.heklaton.rsc.ui.fragment.PagerGridFragment;
 import andro.heklaton.rsc.ui.fragment.PagerListFragment;

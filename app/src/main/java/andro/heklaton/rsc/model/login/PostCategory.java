@@ -1,13 +1,20 @@
 package andro.heklaton.rsc.model.login;
 
+import com.activeandroid.Model;
+import com.activeandroid.annotation.Column;
+import com.activeandroid.annotation.Table;
 import com.google.gson.annotations.Expose;
 import com.google.gson.annotations.SerializedName;
 
-public class PostCategory {
+@Table(name = "UserPostCategory")
+public class PostCategory extends Model {
 
+    @Column(name = "CategoryId")
     @SerializedName("id")
     @Expose
-    private String id;
+    private String categoryId;
+
+    @Column(name = "Name")
     @SerializedName("name")
     @Expose
     private String name;
@@ -17,17 +24,17 @@ public class PostCategory {
      * @return
      * The id
      */
-    public String getId() {
-        return id;
+    public String getCategoryId() {
+        return categoryId;
     }
 
     /**
      *
-     * @param id
+     * @param categoryId
      * The id
      */
-    public void setId(String id) {
-        this.id = id;
+    public void setCategoryId(String categoryId) {
+        this.categoryId = categoryId;
     }
 
     /**

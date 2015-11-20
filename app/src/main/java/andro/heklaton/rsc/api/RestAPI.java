@@ -1,6 +1,6 @@
 package andro.heklaton.rsc.api;
 
-import andro.heklaton.rsc.model.login.LoginRequest;
+import andro.heklaton.rsc.api.request.LoginRequest;
 import andro.heklaton.rsc.model.login.User;
 import retrofit.Callback;
 import retrofit.http.Body;

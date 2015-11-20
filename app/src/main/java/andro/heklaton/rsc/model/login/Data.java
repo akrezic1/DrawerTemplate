@@ -1,22 +1,33 @@
 package andro.heklaton.rsc.model.login;
 
+import com.activeandroid.Model;
+import com.activeandroid.annotation.Column;
+import com.activeandroid.annotation.Table;
 import com.google.gson.annotations.Expose;
 import com.google.gson.annotations.SerializedName;
 
-public class Data {
+@Table(name = "UserData")
+public class Data extends Model {
 
+    @Column(name = "Username")
     @SerializedName("username")
     @Expose
     private String username;
+
+    @Column(name = "Email")
     @SerializedName("email")
     @Expose
     private String email;
+
+    @Column(name = "Token")
     @SerializedName("token")
     @Expose
     private String token;
+
+    @Column(name = "RegistrationId")
     @SerializedName("registrationId")
     @Expose
-    private Object registrationId;
+    private String registrationId;
 
     /**
      *
@@ -77,7 +88,7 @@ public class Data {
      * @return
      * The registrationId
      */
-    public Object getRegistrationId() {
+    public String getRegistrationId() {
         return registrationId;
     }
 
@@ -86,7 +97,7 @@ public class Data {
      * @param registrationId
      * The registrationId
      */
-    public void setRegistrationId(Object registrationId) {
+    public void setRegistrationId(String registrationId) {
         this.registrationId = registrationId;
     }
 

@@ -1,4 +1,4 @@
-package andro.heklaton.rsc.model.login;
+package andro.heklaton.rsc.api.request;
 
 import com.google.gson.annotations.Expose;
 

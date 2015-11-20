@@ -18,28 +18,28 @@
         <ImageView
             android:id="@+id/image_details"
             android:layout_width="match_parent"
+            android:layout_height="match_parent"
             android:scaleType="centerCrop"
-            android:layout_height="@dimen/recycler_image_size"
             android:transitionName="item_image"/>
-
-        <View
-            android:layout_width="match_parent"
-            android:layout_height="2px"
-            android:background="@color/cardview_shadow_start_color"
-            android:layout_below="@+id/image_details"/>
 
         <TextView
             android:id="@+id/title"
             android:layout_width="match_parent"
             android:layout_height="56dp"
             android:layout_alignParentBottom="true"
-            android:layout_below="@+id/image_details"
             android:gravity="center_vertical"
+            android:textColor="@android:color/white"
             android:paddingStart="@dimen/recycler_title_padding"
             android:paddingLeft="@dimen/recycler_title_padding"
             android:paddingEnd="@dimen/recycler_title_padding"
             android:paddingRight="@dimen/recycler_title_padding"
             android:textSize="16sp" />
+
+        <ImageView
+            android:layout_width="match_parent"
+            android:layout_height="56dp"
+            android:layout_alignParentBottom="true"
+            android:src="@drawable/scrim"/>
 
     </RelativeLayout>
 

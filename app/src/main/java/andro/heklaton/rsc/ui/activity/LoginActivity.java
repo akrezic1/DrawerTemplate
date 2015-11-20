@@ -5,11 +5,20 @@ import android.os.Build;
 import android.os.Bundle;
 import android.support.v4.app.ActivityOptionsCompat;
 import android.support.v7.app.AppCompatActivity;
+import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.LinearLayout;
 
 import andro.heklaton.rsc.R;
+import andro.heklaton.rsc.api.RestAPI;
+import andro.heklaton.rsc.model.login.LoginRequest;
+import andro.heklaton.rsc.model.login.User;
+import andro.heklaton.rsc.util.Constants;
+import retrofit.Callback;
+import retrofit.RestAdapter;
+import retrofit.RetrofitError;
+import retrofit.client.Response;
 
 public class LoginActivity extends AppCompatActivity {
 
@@ -28,8 +37,22 @@ public class LoginActivity extends AppCompatActivity {
     private View.OnClickListener loginClickListener = new View.OnClickListener() {
         @Override
         public void onClick(View v) {
-            Intent intent = new Intent(LoginActivity.this, MainActivity.class);
-            startActivity(intent);
+            RestAdapter adapter = new RestAdapter.Builder()
+                    .setEndpoint(Constants.ENDPOINT)
+                    .build();
+
+            RestAPI api = adapter.create(RestAPI.class);
+            api.login(RestAPI.HEADER, new LoginRequest("user", "123456"), new Callback<User>() {
+                @Override
+                public void success(User user, Response response) {
+
+                }
+
+                @Override
+                public void failure(RetrofitError error) {
+
+                }
+            });
         }
     };
 

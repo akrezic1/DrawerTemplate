@@ -3,6 +3,7 @@ package andro.heklaton.rsc.ui.activity;
 import android.content.Intent;
 import android.os.Build;
 import android.os.Bundle;
+import android.support.design.widget.FloatingActionButton;
 import android.support.v4.app.ActivityOptionsCompat;
 import android.support.v7.app.AppCompatActivity;
 import android.view.View;
@@ -11,9 +12,6 @@ import android.widget.LinearLayout;
 
 import andro.heklaton.rsc.R;
 
-/**
- * Created by Andro on 11/19/2015.
- */
 public class RegistrationActivity extends AppCompatActivity {
 
     @Override
@@ -21,7 +19,7 @@ public class RegistrationActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_registration);
 
-        Button btnRegister = (Button) findViewById(R.id.button_register);
+        FloatingActionButton btnRegister = (FloatingActionButton) findViewById(R.id.button_register);
 
         LinearLayout llLogin = (LinearLayout) findViewById(R.id.ll_login);
         llLogin.setOnClickListener(loginClickListener);

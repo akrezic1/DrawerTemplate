@@ -2,6 +2,6 @@
 <resources>
 
     <dimen name="login_card_margin">72dp</dimen>
-    <dimen name="login_fab_margin">72dp</dimen>
+    <dimen name="login_fab_margin">92dp</dimen>
 
 </resources>

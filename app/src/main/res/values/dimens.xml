@@ -8,5 +8,7 @@
     <dimen name="recycler_image_size">200dp</dimen>
     <dimen name="recycler_grid_margin">4dp</dimen>
     <dimen name="recycler_list_margin">8dp</dimen>
+    <dimen name="login_card_margin">32dp</dimen>
+    <dimen name="login_fab_margin">32dp</dimen>
 
 </resources>

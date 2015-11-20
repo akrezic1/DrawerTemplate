@@ -2,6 +2,7 @@ package andro.heklaton.rsc.ui.activity;
 
 import android.os.Bundle;
 import android.support.v7.widget.Toolbar;
+import android.view.View;
 
 import com.google.android.gms.maps.CameraUpdateFactory;
 import com.google.android.gms.maps.GoogleMap;
@@ -12,10 +13,12 @@ import com.google.android.gms.maps.model.MarkerOptions;
 
 import andro.heklaton.rsc.R;
 import andro.heklaton.rsc.ui.activity.base.DrawerActivity;
+import fr.castorflex.android.smoothprogressbar.SmoothProgressBar;
 
 public class MapsActivity extends DrawerActivity implements OnMapReadyCallback {
 
     private GoogleMap mMap;
+    private SmoothProgressBar progressBar;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -25,6 +28,8 @@ public class MapsActivity extends DrawerActivity implements OnMapReadyCallback {
         SupportMapFragment mapFragment = (SupportMapFragment) getSupportFragmentManager()
                 .findFragmentById(R.id.map);
         mapFragment.getMapAsync(this);
+
+        progressBar = (SmoothProgressBar) findViewById(R.id.progress_smooth);
     }
 
     /**
@@ -38,6 +43,8 @@ public class MapsActivity extends DrawerActivity implements OnMapReadyCallback {
      */
     @Override
     public void onMapReady(GoogleMap googleMap) {
+        progressBar.setVisibility(View.GONE);
+
         mMap = googleMap;
 
         // Add a marker in Sydney and move the camera

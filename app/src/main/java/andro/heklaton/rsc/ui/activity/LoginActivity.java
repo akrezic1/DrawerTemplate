@@ -3,10 +3,10 @@ package andro.heklaton.rsc.ui.activity;
 import android.content.Intent;
 import android.os.Build;
 import android.os.Bundle;
+import android.support.design.widget.FloatingActionButton;
 import android.support.v4.app.ActivityOptionsCompat;
 import android.support.v7.app.AppCompatActivity;
 import android.view.View;
-import android.widget.Button;
 import android.widget.EditText;
 import android.widget.LinearLayout;
 import android.widget.Toast;
@@ -21,6 +21,7 @@ import andro.heklaton.rsc.model.login.PostCategory;
 import andro.heklaton.rsc.model.login.User;
 import andro.heklaton.rsc.util.Constants;
 import andro.heklaton.rsc.util.PrefsHelper;
+import fr.castorflex.android.smoothprogressbar.SmoothProgressBar;
 import retrofit.Callback;
 import retrofit.RestAdapter;
 import retrofit.RetrofitError;
@@ -30,13 +31,14 @@ public class LoginActivity extends AppCompatActivity {
 
     private EditText etUsername;
     private EditText etPassword;
+    private SmoothProgressBar progressBar;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_login);
 
-        Button btnLogin = (Button) findViewById(R.id.button_login);
+        FloatingActionButton btnLogin = (FloatingActionButton) findViewById(R.id.button_login);
         btnLogin.setOnClickListener(loginClickListener);
 
         LinearLayout llRegister = (LinearLayout) findViewById(R.id.ll_register);
@@ -44,11 +46,14 @@ public class LoginActivity extends AppCompatActivity {
 
         etUsername = (EditText) findViewById(R.id.username);
         etPassword = (EditText) findViewById(R.id.password);
+
+        progressBar = (SmoothProgressBar) findViewById(R.id.progress_smooth);
     }
 
     private View.OnClickListener loginClickListener = new View.OnClickListener() {
         @Override
         public void onClick(View v) {
+            progressBar.setVisibility(View.VISIBLE);
 
             // check if both username and pass was entered
             if (etUsername.getText().toString().length() == 0 || etPassword.getText().toString().length() == 0) {
@@ -65,11 +70,12 @@ public class LoginActivity extends AppCompatActivity {
                     public void success(User user, Response response) {
                         if (user.getStatus().equals("ok")) {
 
-                            // Save user data locally
+                            // delete existing data
                             new Delete().from(User.class).execute();
                             new Delete().from(PostCategory.class).execute();
                             new Delete().from(Data.class).execute();
 
+                            // Save user data locally
                             user.save();
                             user.getData().save();
                             for (PostCategory pc : user.getConfig().getPostCategories()) {
@@ -80,6 +86,8 @@ public class LoginActivity extends AppCompatActivity {
                             PrefsHelper.saveUsername(LoginActivity.this, user.getData().getUsername());
                             PrefsHelper.saveToken(LoginActivity.this, user.getData().getToken());
 
+                            progressBar.setVisibility(View.GONE);
+
                             Intent intent = new Intent(LoginActivity.this, MainActivity.class);
                             startActivity(intent);
                         }
@@ -87,7 +95,7 @@ public class LoginActivity extends AppCompatActivity {
 
                     @Override
                     public void failure(RetrofitError error) {
-
+                        progressBar.setVisibility(View.GONE);
                     }
                 });
             }

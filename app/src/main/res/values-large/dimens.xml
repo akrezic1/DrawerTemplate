@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <dimen name="login_card_margin">72dp</dimen>
+    <dimen name="login_fab_margin">72dp</dimen>
+
+</resources>

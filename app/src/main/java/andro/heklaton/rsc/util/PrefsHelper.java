@@ -9,6 +9,7 @@ public class PrefsHelper {
     public static final String KEY_USERNAME = "username";
     public static final String KEY_EMAIL = "email";
     public static final String KEY_TOKEN = "token";
+    public static final String KEY_GCM_SENT = "gcm_sent";
 
     public static SharedPreferences getSharedPreferences(Context context) {
         return PreferenceManager.getDefaultSharedPreferences(context);
@@ -22,7 +23,8 @@ public class PrefsHelper {
     }
 
     public static String getUsername(Context context) {
-        return getSharedPreferences(context).getString(KEY_USERNAME, null);
+        return getSharedPreferences(context)
+                .getString(KEY_USERNAME, null);
     }
 
     public static void saveEmail(Context context, String email) {
@@ -33,7 +35,8 @@ public class PrefsHelper {
     }
 
     public static String getEmail(Context context) {
-        return getSharedPreferences(context).getString(KEY_EMAIL, null);
+        return getSharedPreferences(context)
+                .getString(KEY_EMAIL, null);
     }
 
     public static void saveToken(Context context, String token) {
@@ -44,7 +47,15 @@ public class PrefsHelper {
     }
 
     public static String getToken(Context context) {
-        return getSharedPreferences(context).getString(KEY_TOKEN, null);
+        return getSharedPreferences(context)
+                .getString(KEY_TOKEN, null);
+    }
+
+    public static void setGcmTokenSent(Context context, boolean isSet) {
+        getSharedPreferences(context)
+                .edit()
+                .putBoolean(KEY_GCM_SENT, isSet)
+                .apply();
     }
 
 }

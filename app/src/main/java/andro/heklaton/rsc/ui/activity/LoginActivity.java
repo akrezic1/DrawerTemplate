@@ -16,6 +16,7 @@ import com.activeandroid.query.Delete;
 import andro.heklaton.rsc.R;
 import andro.heklaton.rsc.api.RestAPI;
 import andro.heklaton.rsc.api.request.LoginRequest;
+import andro.heklaton.rsc.gcm.RegistrationIntentService;
 import andro.heklaton.rsc.model.login.Data;
 import andro.heklaton.rsc.model.login.PostCategory;
 import andro.heklaton.rsc.model.login.User;
@@ -37,6 +38,10 @@ public class LoginActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_login);
+
+        // start intent to get GCM token
+        Intent intent = new Intent(this, RegistrationIntentService.class);
+        startService(intent);
 
         FloatingActionButton btnLogin = (FloatingActionButton) findViewById(R.id.button_login);
         btnLogin.setOnClickListener(loginClickListener);

@@ -15,5 +15,7 @@
     <string name="password">Password</string>
     <string name="already_have_account">Already have an account?</string>
     <string name="need_an_account">Need an account?</string>
+    <string name="no_username_or_password">Enter username and password</string>
+    <string name="title_activity_maps">Map</string>
 
 </resources>

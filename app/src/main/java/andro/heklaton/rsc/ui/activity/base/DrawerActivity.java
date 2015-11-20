@@ -21,6 +21,7 @@ import andro.heklaton.rsc.interfrace.InflateDrawerActivityLayout;
 import andro.heklaton.rsc.interfrace.NavigationItemPosition;
 import andro.heklaton.rsc.R;
 import andro.heklaton.rsc.ui.activity.MainActivity;
+import andro.heklaton.rsc.ui.activity.MapsActivity;
 import andro.heklaton.rsc.ui.activity.SettingsActivity;
 
 /**
@@ -105,7 +106,7 @@ public abstract class DrawerActivity extends AppCompatActivity implements
                     break;
                 }
                 case R.id.nav_share: {
-                    intent.setClass(DrawerActivity.this, MainActivity.class);
+                    intent.setClass(DrawerActivity.this, MapsActivity.class);
                     startActivity(intent);
                     break;
                 }

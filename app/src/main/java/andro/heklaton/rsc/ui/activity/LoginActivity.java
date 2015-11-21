@@ -1,13 +1,12 @@
 package andro.heklaton.rsc.ui.activity;
 
+import android.app.ActivityOptions;
 import android.content.Intent;
 import android.os.Build;
 import android.os.Bundle;
 import android.support.design.widget.FloatingActionButton;
-import android.support.v4.app.ActivityOptionsCompat;
-import android.support.v7.app.AppCompatActivity;
+import android.util.Pair;
 import android.view.View;
-import android.widget.EditText;
 import android.widget.LinearLayout;
 import android.widget.Toast;
 
@@ -20,48 +19,40 @@ import andro.heklaton.rsc.gcm.RegistrationIntentService;
 import andro.heklaton.rsc.model.login.Data;
 import andro.heklaton.rsc.model.login.PostCategory;
 import andro.heklaton.rsc.model.login.User;
+import andro.heklaton.rsc.ui.activity.base.AccountActivity;
 import andro.heklaton.rsc.util.Constants;
 import andro.heklaton.rsc.util.PrefsHelper;
-import fr.castorflex.android.smoothprogressbar.SmoothProgressBar;
 import retrofit.Callback;
 import retrofit.RestAdapter;
 import retrofit.RetrofitError;
 import retrofit.client.Response;
 
-public class LoginActivity extends AppCompatActivity {
-
-    private EditText etUsername;
-    private EditText etPassword;
-    private SmoothProgressBar progressBar;
+public class LoginActivity extends AccountActivity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_login);
+        overridePendingTransition(android.R.anim.fade_in, android.R.anim.fade_out);
 
         // start intent to get GCM token
         Intent intent = new Intent(this, RegistrationIntentService.class);
         startService(intent);
 
-        FloatingActionButton btnLogin = (FloatingActionButton) findViewById(R.id.button_login);
+        btnLogin = (FloatingActionButton) findViewById(R.id.button_login);
         btnLogin.setOnClickListener(loginClickListener);
 
         LinearLayout llRegister = (LinearLayout) findViewById(R.id.ll_register);
         llRegister.setOnClickListener(registrationClickListener);
-
-        etUsername = (EditText) findViewById(R.id.username);
-        etPassword = (EditText) findViewById(R.id.password);
-
-        progressBar = (SmoothProgressBar) findViewById(R.id.progress_smooth);
     }
 
     private View.OnClickListener loginClickListener = new View.OnClickListener() {
         @Override
         public void onClick(View v) {
-            progressBar.setVisibility(View.VISIBLE);
+            showProgress();
 
             // check if both username and pass was entered
-            if (etUsername.getText().toString().length() == 0 || etPassword.getText().toString().length() == 0) {
+            if (getUsername().length() == 0 || getPassword().length() == 0) {
                 Toast.makeText(LoginActivity.this, R.string.no_username_or_password, Toast.LENGTH_SHORT).show();
 
             } else {
@@ -91,7 +82,7 @@ public class LoginActivity extends AppCompatActivity {
                             PrefsHelper.saveUsername(LoginActivity.this, user.getData().getUsername());
                             PrefsHelper.saveToken(LoginActivity.this, user.getData().getToken());
 
-                            progressBar.setVisibility(View.GONE);
+                            hideProgress();
 
                             Intent intent = new Intent(LoginActivity.this, MainActivity.class);
                             startActivity(intent);
@@ -100,7 +91,7 @@ public class LoginActivity extends AppCompatActivity {
 
                     @Override
                     public void failure(RetrofitError error) {
-                        progressBar.setVisibility(View.GONE);
+                        hideProgress();
                     }
                 });
             }
@@ -115,8 +106,11 @@ public class LoginActivity extends AppCompatActivity {
             Intent intent = new Intent(LoginActivity.this, RegistrationActivity.class);
 
             if (Build.VERSION.SDK_INT > 21) {
-                ActivityOptionsCompat options = ActivityOptionsCompat.
-                        makeSceneTransitionAnimation(LoginActivity.this, findViewById(R.id.card), "card");
+                Pair<View, String> p1 = Pair.create(findViewById(R.id.card), "card");
+                Pair<View, String> p2 = Pair.create((View) btnLogin, "fab");
+
+                ActivityOptions options = ActivityOptions.
+                        makeSceneTransitionAnimation(LoginActivity.this, p1, p2);
                 startActivity(intent, options.toBundle());
 
             } else {
@@ -124,11 +118,5 @@ public class LoginActivity extends AppCompatActivity {
             }
         }
     };
-
-    @Override
-    protected void onPause() {
-        super.onPause();
-        overridePendingTransition(android.R.anim.fade_in, android.R.anim.fade_out);
-    }
 
 }

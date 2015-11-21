@@ -1,25 +1,26 @@
 package andro.heklaton.rsc.ui.activity;
 
+import android.app.ActivityOptions;
 import android.content.Intent;
 import android.os.Build;
 import android.os.Bundle;
 import android.support.design.widget.FloatingActionButton;
-import android.support.v4.app.ActivityOptionsCompat;
-import android.support.v7.app.AppCompatActivity;
+import android.util.Pair;
 import android.view.View;
-import android.widget.Button;
 import android.widget.LinearLayout;
 
 import andro.heklaton.rsc.R;
+import andro.heklaton.rsc.ui.activity.base.AccountActivity;
 
-public class RegistrationActivity extends AppCompatActivity {
+public class RegistrationActivity extends AccountActivity {
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_registration);
 
-        FloatingActionButton btnRegister = (FloatingActionButton) findViewById(R.id.button_register);
+        btnLogin = (FloatingActionButton) findViewById(R.id.button_register);
 
         LinearLayout llLogin = (LinearLayout) findViewById(R.id.ll_login);
         llLogin.setOnClickListener(loginClickListener);
@@ -31,8 +32,11 @@ public class RegistrationActivity extends AppCompatActivity {
             Intent intent = new Intent(RegistrationActivity.this, LoginActivity.class);
 
             if (Build.VERSION.SDK_INT > 21) {
-                ActivityOptionsCompat options = ActivityOptionsCompat.
-                        makeSceneTransitionAnimation(RegistrationActivity.this, findViewById(R.id.card), "card");
+                Pair<View, String> p1 = Pair.create(findViewById(R.id.card), "card");
+                Pair<View, String> p2 = Pair.create((View) btnLogin, "fab");
+
+                ActivityOptions options = ActivityOptions.
+                        makeSceneTransitionAnimation(RegistrationActivity.this, p1, p2);
                 startActivity(intent, options.toBundle());
 
             } else {

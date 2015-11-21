@@ -50,7 +50,7 @@ public abstract class DrawerActivity extends AppCompatActivity implements
         View headerView = navigationView.inflateHeaderView(R.layout.nav_header);
 
         TextView tvUsername = (TextView) headerView.findViewById(R.id.username);
-        TextView tvEmail = (TextView) headerView.findViewById(R.id.email);
+        TextView tvEmail = (TextView) headerView.findViewById(R.id.username);
 
         inflateActivityLayout(getLayoutId());
 

@@ -5,8 +5,10 @@
     <color name="colorPrimaryDark">#00796B</color>
     <color name="colorAccent">#FFC107</color>
     <color name="lightPrimary">#B2DFDB</color>
+
     <color name="gray_background">#ddd</color>
     <color name="gray_hint">#88dddddd</color>
+    <color name="gray_fab">#ccc</color>
 
     <integer-array name="colors">
         <item>@color/colorPrimary</item>

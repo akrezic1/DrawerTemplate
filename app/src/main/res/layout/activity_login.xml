@@ -85,6 +85,7 @@
                             android:layout_marginStart="32dp"
                             android:layout_marginRight="32dp"
                             android:layout_marginEnd="32dp"
+                            android:theme="@style/MyEditTextTheme"
                             android:textColor="@color/gray_background"
                             android:hint="@string/email" />
                     </android.support.design.widget.TextInputLayout>
@@ -101,6 +102,7 @@
                             android:layout_height="wrap_content"
                             android:inputType="textPassword"
                             android:textColor="@color/gray_background"
+                            android:theme="@style/MyEditTextTheme"
                             android:layout_marginLeft="32dp"
                             android:layout_marginStart="32dp"
                             android:layout_marginRight="32dp"
@@ -146,8 +148,10 @@
             android:layout_height="wrap_content"
             card:layout_anchor="@id/card"
             card:layout_anchorGravity="bottom|end"
+            card:backgroundTint="@color/gray_fab"
             card:paddingEnd="32dp"
             android:src="@android:drawable/ic_menu_share"
+            android:transitionName="fab"
             android:layout_marginRight="@dimen/login_fab_margin"
             android:layout_marginEnd="@dimen/login_fab_margin"/>
 
